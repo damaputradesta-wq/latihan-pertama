@@ -12,7 +12,7 @@
                 extend: {
                     colors: {
                         darkbg: '#02040a',
-                        cardbg: '#090e1a',
+                        cardbg: '#070b19',
                         neonamber: '#f59e0b',
                         neoncyan: '#06b6d4',
                     }
@@ -27,59 +27,93 @@
         body { font-family: 'Plus Jakarta Sans', sans-serif; background: #02040a; color: #f3f4f6; overflow-x: hidden; cursor: default; }
         .code-font { font-family: 'Fira Code', monospace; }
 
+        /* Canvas Background Animasi Partikel */
+        #particle-canvas {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
         /* Custom Glowing Cursor */
         .custom-cursor {
             pointer-events: none;
             position: fixed;
-            width: 350px;
-            height: 350px;
-            background: radial-gradient(circle, rgba(245, 158, 11, 0.08) 0%, rgba(6, 182, 212, 0.05) 50%, transparent 70%);
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(245, 158, 11, 0.1) 0%, rgba(6, 182, 212, 0.06) 50%, transparent 70%);
             border-radius: 50%;
             transform: translate(-50%, -50%);
             transition: width 0.3s, height 0.3s;
-            z-index: 9999;
-        }
-
-        /* Cyberpunk Grid & Transparency */
-        .cyber-grid-bg {
-            background-image: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-                              linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-            background-size: 40px 40px;
-            background-color: #02040a;
+            z-index: 9998;
         }
 
         /* Glassmorphism Ultra Modern */
         .glass-ultra {
-            background: rgba(9, 14, 26, 0.75);
+            background: rgba(7, 11, 25, 0.65);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.07);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         .glass-ultra:hover {
-            border-color: rgba(245, 158, 11, 0.4);
-            box-shadow: 0 0 30px rgba(245, 158, 11, 0.15);
+            border-color: rgba(245, 158, 11, 0.5);
+            box-shadow: 0 0 35px rgba(245, 158, 11, 0.2);
+            transform: translateY(-5px);
         }
 
-        /* Animasi Petir / Border Menyala */
-        @keyframes borderGlow {
-            0%, 100% { border-color: rgba(245, 158, 11, 0.3); box-shadow: 0 0 15px rgba(245, 158, 11, 0.1); }
-            50% { border-color: rgba(6, 182, 212, 0.6); box-shadow: 0 0 30px rgba(6, 182, 212, 0.3); }
+        /* Animasi Petir / Lightning Glow Card */
+        @keyframes lightningBorder {
+            0%, 100% { border-color: rgba(245, 158, 11, 0.3); box-shadow: 0 0 20px rgba(245, 158, 11, 0.15), inset 0 0 15px rgba(245, 158, 11, 0.05); }
+            50% { border-color: rgba(6, 182, 212, 0.8); box-shadow: 0 0 40px rgba(6, 182, 212, 0.4), inset 0 0 25px rgba(6, 182, 212, 0.15); }
         }
         .lightning-card {
-            animation: borderGlow 5s infinite;
+            animation: lightningBorder 4s infinite ease-in-out;
+        }
+
+        /* Tombol Mengambang WhatsApp */
+        .wa-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            color: white;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            box-shadow: 0 10px 25px rgba(34, 197, 94, 0.5);
+            z-index: 1000;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: pulseWA 2s infinite;
+        }
+        .wa-float:hover {
+            transform: scale(1.1) rotate(10deg);
+            box-shadow: 0 15px 35px rgba(34, 197, 94, 0.8);
+        }
+        @keyframes pulseWA {
+            0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(34, 197, 94, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
         }
     </style>
 </head>
-<body class="cyber-grid-bg min-h-screen relative">
+<body class="min-h-screen relative">
+
+    <!-- Canvas Partikel Animasi & Petir Latar Belakang -->
+    <canvas id="particle-canvas"></canvas>
 
     <!-- Custom Cursor Follower -->
     <div class="custom-cursor" id="cursor"></div>
 
-    <!-- Floating Background Lighting Orbs -->
-    <div class="absolute top-10 left-10 w-[500px] h-[500px] bg-amber-500/10 rounded-full blur-[160px] pointer-events-none"></div>
-    <div class="absolute top-1/2 right-10 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[160px] pointer-events-none"></div>
-    <div class="absolute bottom-10 left-1/3 w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[160px] pointer-events-none"></div>
+    <!-- Tombol Mengambang WhatsApp -->
+    <a href="https://wa.me/6285212746914?text=Halo%20Desta,%20saya%20tertarik%20dengan%20portofolio%20dan%20layanan%20Anda!" target="_blank" class="wa-float" title="Chat WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
 
     <!-- Navigation Bar -->
     <header class="fixed top-0 left-0 w-full z-50 px-4 py-4">
@@ -106,7 +140,7 @@
     <section class="min-h-screen flex items-center justify-center max-w-6xl mx-auto px-6 pt-32 pb-16">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full">
             <div class="lg:col-span-7 space-y-6">
-                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-semibold code-font">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-semibold code-font shadow-lg shadow-amber-500/10">
                     <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
                     SOFTWARE ENGINEER & QA SPECIALIST
                 </div>
@@ -120,13 +154,13 @@
                     <a href="#projects" class="px-8 py-4 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-600 text-darkbg font-bold shadow-xl shadow-amber-500/30 hover:scale-105 transition-all flex items-center gap-2">
                         <i class="fa-solid fa-code"></i> Jelajahi Proyek
                     </a>
-                    <a href="#contact" class="px-8 py-4 rounded-xl glass-ultra text-white font-semibold hover:border-cyan-400 hover:text-cyan-400 transition-all flex items-center gap-2">
-                        <i class="fa-solid fa-paper-plane"></i> Kirim Pesan
+                    <a href="https://wa.me/6285212746914?text=Halo%20Desta,%20saya%20ingin%20berkolaborasi%20dengan%20Anda." target="_blank" class="px-8 py-4 rounded-xl glass-ultra text-white font-semibold hover:border-emerald-400 hover:text-emerald-400 transition-all flex items-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-emerald-400 text-lg"></i> Chat WhatsApp
                     </a>
                 </div>
 
                 <!-- Stats Grid -->
-                <div class="grid grid-cols-3 gap-6 pt-8 border-t border-gray-800">
+                <div class="grid grid-cols-3 gap-6 pt-8 border-t border-gray-800/80">
                     <div>
                         <h3 class="text-2xl md:text-3xl font-extrabold text-amber-500 code-font">18+</h3>
                         <p class="text-xs text-gray-400 mt-1">Usia Produktif</p>
@@ -186,7 +220,7 @@
                 </h3>
                 <ul class="space-y-3 text-sm text-gray-300 code-font">
                     <li class="flex items-center gap-3"><i class="fa-solid fa-envelope text-amber-500 w-5"></i> <span>desta@email.dev</span></li>
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-phone text-amber-500 w-5"></i> <span>+62 8xx-xxxx-xxxx</span></li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-phone text-amber-500 w-5"></i> <span>+62 852-1274-6914</span></li>
                     <li class="flex items-center gap-3"><i class="fa-brands fa-github text-amber-500 w-5"></i> <span>damaputradesta-wq</span></li>
                     <li class="flex items-center gap-3"><i class="fa-brands fa-tiktok text-amber-500 w-5"></i> <span>CrossingTime / cauuasakk1</span></li>
                     <li class="flex items-center gap-3"><i class="fa-solid fa-location-dot text-amber-500 w-5"></i> <span>Tasikmalaya, Jawa Barat</span></li>
@@ -364,7 +398,7 @@
                 </p>
                 <div class="space-y-3 code-font text-sm text-gray-300">
                     <p class="flex items-center gap-3"><i class="fa-solid fa-envelope text-amber-500 w-5"></i> desta@email.dev</p>
-                    <p class="flex items-center gap-3"><i class="fa-solid fa-location-dot text-amber-500 w-5"></i> Tasikmalaya, Jawa Barat</p>
+                    <p class="flex items-center gap-3"><i class="fa-solid fa-phone text-amber-500 w-5"></i> +62 852-1274-6914</p>
                     <p class="flex items-center gap-3"><i class="fa-brands fa-github text-amber-500 w-5"></i> damaputradesta-wq</p>
                 </div>
             </div>
@@ -392,13 +426,83 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Footer (Hanya 2026 Desta Damaputra) -->
     <footer class="border-t border-gray-900/80 py-8 text-center text-gray-500 text-sm code-font">
-        <p>&copy; <?php echo date('Y'); ?> <strong class="text-white">Desta Damaputra</strong>. Profesional Cyberpunk Portfolio & GitHub.</p>
+        <p>&copy; 2026 Desta Damaputra</p>
     </footer>
 
-    <!-- Script Custom Cursor Follower -->
+    <!-- Script JavaScript untuk Animasi Partikel Cyber (Efek Neural Network Bergerak) -->
     <script>
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        let particlesArray = [];
+        const numberOfParticles = 65;
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 1;
+                this.speedX = (Math.random() - 0.5) * 0.8;
+                this.speedY = (Math.random() - 0.5) * 0.8;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x > canvas.width) this.x = 0;
+                else if (this.x < 0) this.x = canvas.width;
+                if (this.y > canvas.height) this.y = 0;
+                else if (this.y < 0) this.y = canvas.height;
+            }
+            draw() {
+                ctx.fillStyle = 'rgba(245, 158, 11, 0.5)';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particlesArray = [];
+            for (let i = 0; i < numberOfParticles; i++) {
+                particlesArray.push(new Particle());
+            }
+        }
+        initParticles();
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+                particlesArray[i].draw();
+
+                for (let j = i; j < particlesArray.length; j++) {
+                    const dx = particlesArray[i].x - particlesArray[j].x;
+                    const dy = particlesArray[i].y - particlesArray[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    if (distance < 120) {
+                        ctx.strokeStyle = `rgba(6, 182, 212, ${0.15 - distance/800})`;
+                        ctx.lineWidth = 0.8;
+                        ctx.beginPath();
+                        ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
+                        ctx.lineTo(particlesArray[j].x, particlesArray[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+
+        // Cursor Follower
         const cursor = document.getElementById('cursor');
         window.addEventListener('mousemove', (e) => {
             cursor.style.left = e.clientX + 'px';
