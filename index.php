@@ -4,50 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Desta Damaputra — Software Engineer & QA Specialist</title>
-    <!-- Tailwind CSS CDN for Modern Professional UI/UX -->
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        darkbg: '#030712',
-                        cardbg: '#111827',
+                        darkbg: '#050b14',
+                        cardbg: '#0f172a',
                         neonamber: '#f59e0b',
-                        neonculture: '#06b6d4',
                     }
                 }
             }
         }
     </script>
-    <!-- Google Fonts & FontAwesome Icons -->
+    <!-- Google Fonts & FontAwesome -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #030712; color: #f3f4f6; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #050b14; color: #f3f4f6; }
         .code-font { font-family: 'Fira Code', monospace; }
-        .cyber-grid {
-            background-image: linear-gradient(rgba(245, 158, 11, 0.03) 1px, transparent 1px),
-                              linear-gradient(90deg, rgba(245, 158, 11, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
+        /* Background Gradient & Pattern Mewah */
+        .hero-bg {
+            background: radial-gradient(circle at 15% 20%, rgba(245, 158, 11, 0.08) 0%, transparent 40%),
+                        radial-gradient(circle at 85% 80%, rgba(6, 182, 212, 0.08) 0%, transparent 40%),
+                        #050b14;
         }
         .glass-panel {
-            background: rgba(17, 24, 39, 0.8);
+            background: rgba(15, 23, 42, 0.75);
             backdrop-filter: blur(16px);
-            border: 1px solid rgba(245, 158, 11, 0.2);
+            border: 1px solid rgba(245, 158, 11, 0.25);
         }
         .glass-panel:hover {
             border-color: rgba(245, 158, 11, 0.6);
-            box-shadow: 0 0 25px rgba(245, 158, 11, 0.15);
+            box-shadow: 0 0 30px rgba(245, 158, 11, 0.15);
         }
     </style>
 </head>
-<body class="cyber-grid min-h-screen relative overflow-x-hidden">
+<body class="hero-bg min-h-screen relative overflow-x-hidden">
 
-    <!-- Ambient Glowing Background Lights -->
-    <div class="absolute top-20 left-10 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
-    <div class="absolute top-1/3 right-10 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
-    <div class="absolute bottom-20 left-1/3 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl pointer-events-none"></div>
+    <!-- Ambient Glow Lights -->
+    <div class="absolute top-20 left-10 w-96 h-96 bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="absolute top-1/3 right-10 w-96 h-96 bg-amber-500/10 rounded-full blur-[120px] pointer-events-none"></div>
 
     <!-- Navigation Bar -->
     <header class="fixed top-0 left-0 w-full z-50 px-4 py-4">
@@ -56,7 +55,7 @@
                 <span class="w-10 h-10 bg-gradient-to-tr from-amber-500 to-yellow-400 text-darkbg font-extrabold rounded-xl flex items-center justify-center shadow-lg shadow-amber-500/30">D</span>
                 <span class="font-bold text-lg tracking-wider text-white">Desta<span class="text-amber-500">.dev</span></span>
             </div>
-            <ul class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-400">
+            <ul class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
                 <li><a href="#about" class="hover:text-amber-500 transition-colors"><i class="fa-solid fa-user text-amber-500 mr-1"></i> Tentang</a></li>
                 <li><a href="#experience" class="hover:text-amber-500 transition-colors"><i class="fa-solid fa-briefcase text-amber-500 mr-1"></i> Pengalaman</a></li>
                 <li><a href="#projects" class="hover:text-amber-500 transition-colors"><i class="fa-solid fa-code text-amber-500 mr-1"></i> Proyek</a></li>
@@ -74,14 +73,10 @@
     <section class="min-h-screen flex items-center justify-center max-w-6xl mx-auto px-6 pt-32 pb-16">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full">
             <div class="lg:col-span-7 space-y-6">
-                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-semibold code-font">
-                    <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-                    SYSTEM ONLINE // REPO: latihan-pertama
-                </div>
                 <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight">
                     Hi, Saya <span class="bg-gradient-to-r from-amber-400 via-yellow-500 to-cyan-400 bg-clip-text text-transparent">Desta Damaputra</span>
                 </h1>
-                <p class="text-gray-400 text-base md:text-lg leading-relaxed max-w-xl">
+                <p class="text-gray-300 text-base md:text-lg leading-relaxed max-w-xl">
                     Software Engineering Graduate dari SMKN Manonjaya & Software Quality Assurance Specialist yang berfokus pada pengembangan sistem web dinamis berbasis PHP/MySQL dan pengujian perangkat lunak berkualitas tinggi.
                 </p>
                 <div class="flex flex-wrap gap-4 pt-2">
@@ -93,28 +88,29 @@
                     </a>
                 </div>
                 <!-- Stats Row -->
-                <div class="grid grid-cols-3 gap-6 pt-8 border-t border-gray-800">
+                <div class="grid grid-cols-3 gap-6 pt-8 border-t border-gray-800/80">
                     <div>
                         <h3 class="text-2xl md:text-3xl font-extrabold text-amber-500">18+</h3>
-                        <p class="text-xs text-gray-500 code-font mt-1">Usia Produktif</p>
+                        <p class="text-xs text-gray-400 code-font mt-1">Usia Produktif</p>
                     </div>
                     <div>
                         <h3 class="text-2xl md:text-3xl font-extrabold text-cyan-400">3+</h3>
-                        <p class="text-xs text-gray-500 code-font mt-1">Sistem Web Utama</p>
+                        <p class="text-xs text-gray-400 code-font mt-1">Sistem Web Utama</p>
                     </div>
                     <div>
                         <h3 class="text-2xl md:text-3xl font-extrabold text-purple-400">100%</h3>
-                        <p class="text-xs text-gray-500 code-font mt-1">Standar QA & Code</p>
+                        <p class="text-xs text-gray-400 code-font mt-1">Standar QA & Code</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Interactive 3D Profile Card -->
+            <!-- Kartu Profil dengan Foto Asli (foto-profil.jpg) -->
             <div class="lg:col-span-5 flex justify-center">
                 <div class="glass-panel p-6 rounded-3xl w-full max-w-sm text-center relative group transition-all duration-300 hover:scale-[1.02] shadow-2xl">
                     <div class="absolute -inset-0.5 bg-gradient-to-r from-amber-500 to-cyan-500 rounded-3xl blur opacity-30 group-hover:opacity-70 transition duration-500"></div>
-                    <div class="relative bg-gray-900/90 p-6 rounded-2xl">
-                        <div class="relative w-40 h-40 mx-auto mb-6 rounded-full p-1 bg-gradient-to-tr from-amber-500 to-cyan-400 shadow-xl">
+                    <div class="relative bg-gray-950/80 p-6 rounded-2xl">
+                        <div class="relative w-44 h-44 mx-auto mb-6 rounded-full p-1 bg-gradient-to-tr from-amber-500 to-cyan-400 shadow-2xl">
+                            <!-- Foto Profil Asli -->
                             <img src="foto-profil.jpg" alt="Desta Damaputra" class="w-full h-full object-cover rounded-full" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=60'">
                         </div>
                         <h3 class="text-xl font-bold text-white mb-1">Desta Damaputra</h3>
@@ -164,7 +160,7 @@
         </div>
     </section>
 
-    <!-- Experience & Training Section -->
+    <!-- Experience Section -->
     <section id="experience" class="max-w-6xl mx-auto px-6 py-20">
         <div class="text-center mb-16">
             <span class="text-amber-500 code-font text-xs font-bold uppercase tracking-widest">// 02. EXPERIENCE & SKILLS TRAINING</span>
@@ -213,7 +209,6 @@
             <p class="text-gray-400 text-sm mt-1">Aplikasi dan dokumentasi pengujian yang telah dikembangkan di server lokal Laragon</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Project 1 -->
             <div class="glass-panel p-6 rounded-2xl flex flex-col justify-between group hover:-translate-y-2 transition-all duration-300">
                 <div>
                     <div class="w-12 h-12 bg-amber-500/10 text-amber-500 rounded-xl flex items-center justify-center text-xl mb-6 group-hover:scale-110 transition-transform">
@@ -226,13 +221,12 @@
                 </div>
                 <div>
                     <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="px-2.5 py-1 bg-gray-900 text-amber-400 text-xs code-font rounded border border-amber-500/20">PHP Native</span>
-                        <span class="px-2.5 py-1 bg-gray-900 text-cyan-400 text-xs code-font rounded border border-cyan-500/20">MySQL</span>
-                        <span class="px-2.5 py-1 bg-gray-900 text-purple-400 text-xs code-font rounded border border-purple-500/20">Laragon</span>
+                        <span class="px-2.5 py-1 bg-gray-950 text-amber-400 text-xs code-font rounded border border-amber-500/20">PHP Native</span>
+                        <span class="px-2.5 py-1 bg-gray-950 text-cyan-400 text-xs code-font rounded border border-cyan-500/20">MySQL</span>
+                        <span class="px-2.5 py-1 bg-gray-950 text-purple-400 text-xs code-font rounded border border-purple-500/20">Laragon</span>
                     </div>
                 </div>
             </div>
-            <!-- Project 2 -->
             <div class="glass-panel p-6 rounded-2xl flex flex-col justify-between group hover:-translate-y-2 transition-all duration-300">
                 <div>
                     <div class="w-12 h-12 bg-cyan-500/10 text-cyan-400 rounded-xl flex items-center justify-center text-xl mb-6 group-hover:scale-110 transition-transform">
@@ -245,13 +239,12 @@
                 </div>
                 <div>
                     <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="px-2.5 py-1 bg-gray-900 text-amber-400 text-xs code-font rounded border border-amber-500/20">Marketing</span>
-                        <span class="px-2.5 py-1 bg-gray-900 text-cyan-400 text-xs code-font rounded border border-cyan-500/20">TikTok Shop</span>
-                        <span class="px-2.5 py-1 bg-gray-900 text-purple-400 text-xs code-font rounded border border-purple-500/20">Tokopedia</span>
+                        <span class="px-2.5 py-1 bg-gray-950 text-amber-400 text-xs code-font rounded border border-amber-500/20">Marketing</span>
+                        <span class="px-2.5 py-1 bg-gray-950 text-cyan-400 text-xs code-font rounded border border-cyan-500/20">TikTok Shop</span>
+                        <span class="px-2.5 py-1 bg-gray-950 text-purple-400 text-xs code-font rounded border border-purple-500/20">Tokopedia</span>
                     </div>
                 </div>
             </div>
-            <!-- Project 3 -->
             <div class="glass-panel p-6 rounded-2xl flex flex-col justify-between group hover:-translate-y-2 transition-all duration-300">
                 <div>
                     <div class="w-12 h-12 bg-purple-500/10 text-purple-400 rounded-xl flex items-center justify-center text-xl mb-6 group-hover:scale-110 transition-transform">
@@ -264,9 +257,9 @@
                 </div>
                 <div>
                     <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="px-2.5 py-1 bg-gray-900 text-amber-400 text-xs code-font rounded border border-amber-500/20">QA Testing</span>
-                        <span class="px-2.5 py-1 bg-gray-900 text-cyan-400 text-xs code-font rounded border border-cyan-500/20">Test Case</span>
-                        <span class="px-2.5 py-1 bg-gray-900 text-purple-400 text-xs code-font rounded border border-purple-500/20">Analysis</span>
+                        <span class="px-2.5 py-1 bg-gray-950 text-amber-400 text-xs code-font rounded border border-amber-500/20">QA Testing</span>
+                        <span class="px-2.5 py-1 bg-gray-950 text-cyan-400 text-xs code-font rounded border border-cyan-500/20">Test Case</span>
+                        <span class="px-2.5 py-1 bg-gray-950 text-purple-400 text-xs code-font rounded border border-purple-500/20">Analysis</span>
                     </div>
                 </div>
             </div>
@@ -335,13 +328,13 @@
                 ?>
                 <form action="process-contact.php" method="POST" class="space-y-4">
                     <div>
-                        <input type="text" name="nama" placeholder="Nama Lengkap Anda" required class="w-full px-4 py-3 rounded-xl bg-gray-900/80 border border-gray-800 text-white text-sm focus:border-amber-500 focus:outline-none transition-colors">
+                        <input type="text" name="nama" placeholder="Nama Lengkap Anda" required class="w-full px-4 py-3 rounded-xl bg-gray-950/80 border border-gray-800 text-white text-sm focus:border-amber-500 focus:outline-none transition-colors">
                     </div>
                     <div>
-                        <input type="email" name="email" placeholder="Alamat Email Aktif" required class="w-full px-4 py-3 rounded-xl bg-gray-900/80 border border-gray-800 text-white text-sm focus:border-amber-500 focus:outline-none transition-colors">
+                        <input type="email" name="email" placeholder="Alamat Email Aktif" required class="w-full px-4 py-3 rounded-xl bg-gray-950/80 border border-gray-800 text-white text-sm focus:border-amber-500 focus:outline-none transition-colors">
                     </div>
                     <div>
-                        <textarea name="pesan" rows="4" placeholder="Tulis pesan atau penawaran kerja sama..." required class="w-full px-4 py-3 rounded-xl bg-gray-900/80 border border-gray-800 text-white text-sm focus:border-amber-500 focus:outline-none transition-colors"></textarea>
+                        <textarea name="pesan" rows="4" placeholder="Tulis pesan atau penawaran kerja sama..." required class="w-full px-4 py-3 rounded-xl bg-gray-950/80 border border-gray-800 text-white text-sm focus:border-amber-500 focus:outline-none transition-colors"></textarea>
                     </div>
                     <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-600 text-darkbg font-bold shadow-xl shadow-amber-500/30 hover:scale-[1.01] transition-all flex items-center justify-center gap-2">
                         <i class="fa-solid fa-paper-plane"></i> Kirim Pesan Sekarang
